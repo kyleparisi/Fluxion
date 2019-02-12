@@ -28,12 +28,17 @@
     "watch": "parcel public/index.html --target electron --no-hmr --public-url ./",
     "test": "echo no test",
     "pack": "electron-builder --dir",
-    "dist": "electron-builder"
+    "dist": "electron-builder",
+    "release": "yarn build && electron-builder --publish"
   },
   "build": {
+    "productName": "Fluxion",
     "appId": "app.fluxion",
     "mac": {
       "category": "public.app-category.developer-tools"
+    },
+    "win": {
+      "target": "nsis"
     },
     "files": [
       "*.js",

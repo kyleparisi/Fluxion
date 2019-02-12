@@ -1,0 +1,36 @@
+osx_image: xcode9.4
+
+dist: trusty
+sudo: false
+
+language: node_js
+node_js: "10"
+
+env:
+  global:
+    - ELECTRON_CACHE=$HOME/.cache/electron
+    - ELECTRON_BUILDER_CACHE=$HOME/.cache/electron-builder
+    - secure: 2WVdO7U6jfi0R6frq5hhVnRMs4wxAw4FnGHw07DX7IJenPJ7KcJ7nxa7MtW6F7vIRGH+01y61pSyhKYEhmf4fxMCnFbu1nok6RkcowF0suZ15dDv8ffG7TYoeUCpSVSyHVU161JIYg61F5wQ4AKMu47wTkfYD0SPjtUZiANY33y5DvLrzIe3ohF/VWOLtvRbahcvc5567GAmaE0pPxp5nH9y+ND5vbPmQNoV7ei7NCqm/Te+dYAZdNt9g04jT1VCwpPviz6fO/+8Ux0CjFJV5kfWHUUMmJ+TPOdU0OMlVy62qmS1NsIzEHqvei4fCsbaQcJ23X+bf/IqOod1XdFkxxHSFjif11BdPQJzhlY7nGkktMdp2TfWIj41HM4z59e0Ro3uzRHrzQl+6IPNI3sD2KkUPuHmW9sX9Iwygii6+QtW/QVjqkblMoGFA3H4B4cR3BFS6SBthm+y4ghmjm+FoI2GUBAgkLGPA10ohCf4TNjLqgai0cF3HjsT8o2DLYv3ouP/c002p1oK5q6GGPFLZ0EZnNFkeuus8EoA1BoT/3lDF+NzZNumqB914ynxQnirIJO5H2W0mKNVGgHmixPmX+OZ0PK5ITRSOE6WaN+LqIy6jJEaYLcgo9opfTLOCA2FPb4/BMEJVHIJ0OysgZygKKjccI9FD1iRCmikS3rgIYA=
+
+os:
+  - linux
+  - osx
+
+cache:
+  directories:
+    - node_modules
+    - $HOME/.cache/electron
+    - $HOME/.cache/electron-builder
+    - $HOME/.npm/_prebuilds
+
+script:
+  - npm run build
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then npm run dist; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then npm run dist -- --mac --win; fi
+
+before_cache:
+  - rm -rf $HOME/.cache/electron-builder/wine
+
+branches:
+  except:
+    - "/^v\\d+\\.\\d+\\.\\d+$/"
