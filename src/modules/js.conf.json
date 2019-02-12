@@ -1,0 +1,13 @@
+{
+  "position": {
+    "top": 10,
+    "left": 10,
+    "right": 130
+  },
+  "module": "js",
+  "name": "js",
+  "require": "",
+  "run": "",
+  "inputs": {},
+  "outputs": {}
+}

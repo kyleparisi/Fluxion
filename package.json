@@ -1,0 +1,47 @@
+{
+  "name": "fluxion",
+  "version": "0.1.0",
+  "description": "A flow based programming environment for javascript and nodejs.",
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "prettier": "^1.15.3",
+    "pug": "^2.0.3",
+    "vue": "^2.5.21",
+    "vue-clickaway": "^2.2.2",
+    "vue-codemirror": "^4.0.6"
+  },
+  "devDependencies": {
+    "@vue/component-compiler-utils": "^2.3.1",
+    "ajv": "^6.9.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "electron": "^4.0.0",
+    "electron-builder": "^20.38.5",
+    "parcel": "^1.11.0",
+    "vue-devtools": "^5.0.0-beta.1",
+    "vue-hot-reload-api": "^2.3.1",
+    "vue-template-compiler": "^2.5.21"
+  },
+  "main": "electron-starter.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "rm -rf dist && parcel build public/index.html --target electron --no-minify --no-source-maps --public-url ./",
+    "watch": "parcel public/index.html --target electron --no-hmr --public-url ./",
+    "test": "echo no test",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "app.fluxion",
+    "mac": {
+      "category": "public.app-category.developer-tools"
+    },
+    "files": [
+      "*.js",
+      "src/modules/*",
+      "src/Menus/*",
+      "dist"
+    ]
+  },
+  "author": "Kyle Parisi (http://blog.kyleparisi.com)",
+  "license": "Apache-2.0"
+}

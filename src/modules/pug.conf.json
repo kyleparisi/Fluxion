@@ -1,0 +1,14 @@
+{
+  "position": {
+    "top": 10,
+    "left": 10,
+    "right": 130
+  },
+  "module": "pug",
+  "name": "pug",
+  "template": "",
+  "outputs": {
+    "template": true
+  },
+  "symbol": "https://te0-cdn.s3.amazonaws.com/pug.svg"
+}
