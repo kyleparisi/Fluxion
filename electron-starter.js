@@ -37,9 +37,7 @@ function createWindow() {
       slashes: true
     })
   );
-
-  BrowserWindow.addDevToolsExtension("/Users/kyleparisi/Extensions/vuejs");
-
+  
   // Emitted when the window is closed.
   mainWindow.on("closed", function() {
     // Dereference the window object, usually you would store windows
