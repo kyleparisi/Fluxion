@@ -12,7 +12,7 @@
           <circle cx="2" cy="2" r="2" stroke="none" fill="#c3fdff"></circle>
         </marker>
         <Link :link="link"
-              :sourceX="nodes[link.source.node].position.left"
+              :sourceX="nodes[link.source.node].position.right"
               :sourceY="nodes[link.source.node].position.top"
               :targetX="nodes[link.target.node].position.left"
               :targetY="nodes[link.target.node].position.top"

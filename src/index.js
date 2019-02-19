@@ -52,8 +52,15 @@ if (file) {
   systemErrorComponent.message = "Start here:";
 }
 function addNode(type = "js") {
-  const conf = JSON.parse(JSON.stringify(nodeTypes[type]));
-  const id = Object.keys(data[current.layer].nodes).length;
+  const nodeType = _.get(nodeTypes, type, {
+    "module": type,
+    "name": type,
+    "inputs": {},
+    "outputs": {}
+  });
+  const conf = JSON.parse(JSON.stringify(nodeType));
+  const nodes = Object.keys(data[current.layer].nodes);
+  const id = (Number(nodes[nodes.length - 1]) || 0) + 1;
   const newNode = {
     ...conf,
     id,
@@ -61,7 +68,7 @@ function addNode(type = "js") {
     position: {
       top: document.documentElement.scrollTop + 10,
       left: document.documentElement.scrollLeft + 10,
-      right: 130
+      right: _.get(conf, "position.right", false) || 130
     }
   };
   Vue.set(window.data[current.layer].nodes, id, newNode);

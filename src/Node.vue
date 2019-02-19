@@ -1,37 +1,46 @@
 <template>
-  <div>
-    <div class="node absolute ba br2 color-node flex items-center"
-         :class="{'bg-color-node shadow-1': configuring.id === node.id, 'bg-black-node': configuring.id !== node.id, 'b--orange': problem[node.id], 'b--color-node': !problem[node.id], 'flex-column': node.symbol }"
-         :style="nodeStyle()"
-         v-on:dblclick="configuring = configuring.id === node.id ? {} : node">
-      <div class="tc w-100 pa1" v-if="node.symbol"><img class="w-50" :src="node.symbol"></div>
-      <div class="tc w-100 pa1">{{ node.name }}</div>
-    </div>
-    <component v-bind:is="node.module" :node="node"></component>
+  <div class="node absolute ba br2 color-node flex flex-column"
+       :class="{'bg-color-node shadow-1': configuring.id === node.id, 'bg-black-node': configuring.id !== node.id, 'b--orange': problem[node.id], 'b--color-node': !problem[node.id], 'flex-column': node.symbol }"
+       :style="nodeStyle()"
+       v-on:dblclick="configuring = configuring.id === node.id ? {} : node">
+    <div class="tc w-100 pa1" v-if="node.symbol"><img class="w-50" :src="node.symbol"></div>
+    <div class="tc w-100 pa1">{{ node.name }}</div>
+
+    <component class="w-100 pa1" v-bind:is="node.module" :node="node"></component>
+
+    <!-- Inputs -->
     <template v-for="(_, name, index) in node.inputs">
-      <div class="port pointer absolute bg-green white br-100"
-           v-for="(_, name, index) in node.inputs"
-           :style="{top: top(index), left: inputLeft()}"
-           :id="`inputs_${node.id}_${name}`"
-           @click="inputClick(name)"
-           @mouseover="mouseOverPort = `${node.id}_${name}`"
-           @mouseleave="mouseOverPort = ''"
-      ></div>
-      <div class="absolute color-node"
-           :style="{top: topLabel(index), left: labelLeft()}"
-           v-show="mouseOverPort === `${node.id}_${name}`">{{ name }}</div>
+      <div class="absolute" :style="{top: top(index), left: 0}">
+        <!-- Port -->
+        <div class="absolute port pointer bg-green white br-100"
+             v-for="(_, name, index) in node.inputs"
+             :id="`inputs_${node.id}_${name}`"
+             @click="inputClick(name)"
+             @mouseover="mouseOverPort = `${node.id}_${name}`"
+             @mouseleave="mouseOverPort = ''"
+        ></div>
+        <!-- Port Label -->
+        <div class="absolute color-node"
+             :style="{top: '-5px', right: '4px'}"
+             v-show="mouseOverPort === `${node.id}_${name}`">{{ name }}</div>
+      </div>
     </template>
+
+    <!-- Outputs -->
     <template v-for="(_, name, index) in node.outputs">
-      <div class="port pointer absolute bg-green br-100"
-           :style="{top: top(index), left: outputRight()}"
-           :id="`outputs_${node.id}_${name}`"
-           @click="outputClick(name)"
-           @mouseover="mouseOverPort = `${node.id}_${name}`"
-           @mouseleave="mouseOverPort = ''"
-      ></div>
-      <div class="absolute color-node"
-           :style="{top: topLabel(index), left: labelRight()}"
-           v-show="mouseOverPort === `${node.id}_${name}`">{{ name }}</div>
+      <!-- Port -->
+      <div class="absolute" :style="{top: top(index), right: 0}">
+        <div class="absolute right-0 port pointer bg-green br-100"
+             :id="`outputs_${node.id}_${name}`"
+             @click="outputClick(name)"
+             @mouseover="mouseOverPort = `${node.id}_${name}`"
+             @mouseleave="mouseOverPort = ''"
+        ></div>
+        <!-- Port Label -->
+        <div class="absolute color-node"
+             :style="{top: '-5px', left: '4px'}"
+             v-show="mouseOverPort === `${node.id}_${name}`">{{ name }}</div>
+      </div>
     </template>
   </div>
 </template>
@@ -40,7 +49,6 @@
   import Drag from "./Drag";
   import js from "./modules/js.vue";
   import pug from "./modules/pug.vue";
-
 
   export default {
     name: "Node",
@@ -54,15 +62,15 @@
       verticalPosition(index) {
         let buffer = 5;
         if (index) {
-          buffer += 5 * index;
+          buffer += 10 * index;
         }
-        return 10 * index + buffer;
+        return buffer;
       },
       top(index) {
-        return this.node.position.top + this.verticalPosition(index) + 'px'
+        return this.verticalPosition(index) + 'px'
       },
       topLabel(index) {
-        return this.node.position.top + this.verticalPosition(index) - 6 + 'px'
+        return this.verticalPosition(index) + 'px'
       },
       inputLeft() {
         return this.node.position.left + "px";
@@ -74,7 +82,8 @@
         return this.node.position.left + 10 + 'px'
       },
       labelRight() {
-        return this.node.position.left + 120 + 5 + 'px'
+        console.log(this.node.position.right + 10 + 'px');
+        return this.node.position.right + 'px'
       },
       nodeStyle() {
         // Node Height: calculate height based on max number of ports
@@ -87,7 +96,7 @@
         if (height < 40 && !this.node.symbol) {
           height = 40;
         }
-        
+
         return {
           top: this.node.position.top + "px",
           left: this.node.position.left + "px",
@@ -123,7 +132,7 @@
       }
     },
     mounted() {
-      const dragHandler = Drag(this.$el.firstChild).in(document.body);
+      const dragHandler = Drag(this.$el).in(document.body);
       dragHandler.onDrag(({left, right, top}) => {
         this.node.position = {left, right, top};
       });

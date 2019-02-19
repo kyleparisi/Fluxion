@@ -49,7 +49,7 @@
       sourceX: Number,
       sourceY: Number,
       targetX: Number,
-      targetY: Number,
+      targetY: Number
     },
     methods: {
       verticalPosition(index) {
@@ -80,12 +80,12 @@
 
         const n = 50;
         const start = {
-          x: this.sourceX + 120,
+          x: this.sourceX,
           y: this.sourceY + this.verticalPosition(source_port_id)
         };
         const handle = {
           start: {
-            x: this.sourceX + 120 + n,
+            x: this.sourceX + n,
             y: this.sourceY + this.verticalPosition(source_port_id)
           },
           end: {

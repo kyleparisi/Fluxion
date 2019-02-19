@@ -7,7 +7,6 @@ const BrowserWindow = electron.BrowserWindow;
 
 const path = require("path");
 const url = require("url");
-const globalShortcut = electron.globalShortcut;
 
 const template = require("./Menu");
 
@@ -37,7 +36,7 @@ function createWindow() {
       slashes: true
     })
   );
-  
+
   // Emitted when the window is closed.
   mainWindow.on("closed", function() {
     // Dereference the window object, usually you would store windows
