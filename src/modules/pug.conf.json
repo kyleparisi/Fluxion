@@ -1,9 +1,4 @@
 {
-  "position": {
-    "top": 10,
-    "left": 10,
-    "right": 130
-  },
   "module": "pug",
   "name": "pug",
   "template": "",
