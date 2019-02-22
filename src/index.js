@@ -36,7 +36,7 @@ const systemErrorComponent = new Vue({
 });
 
 const file = localStorage.getItem("file");
-document.title = file || "Welcome to Fuxion";
+document.title = file || "Welcome to Fluxion";
 if (file) {
   delete require.cache[file];
   try {
