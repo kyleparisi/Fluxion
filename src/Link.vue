@@ -158,7 +158,7 @@
 
       // input side of link
       if (typeof engine.inputs[target.node] !== "undefined" &&
-          typeof engine.inputs[target.port] !== "undefined"
+          typeof engine.inputs[target.node][target.port] !== "undefined"
       ) {
         const newChannel = new Channel();
         const originalChannel = engine.inputs[target.node][target.port];

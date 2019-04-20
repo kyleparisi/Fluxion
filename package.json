@@ -1,6 +1,6 @@
 {
   "name": "fluxion",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "description": "A flow based programming environment for javascript and nodejs.",
   "dependencies": {
     "lodash": "^4.17.11",
