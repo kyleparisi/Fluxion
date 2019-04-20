@@ -7,6 +7,7 @@ function save() {
   Object.keys(data).map(layer_id => {
     data[layer_id].packets = {};
     data[layer_id].selectedLinks = {};
+    data[layer_id].addingLink = {};
     data[layer_id].problem = {};
     data[layer_id].pan = {
       x: window.pageXOffset,
