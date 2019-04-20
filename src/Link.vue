@@ -137,7 +137,7 @@
 
       // output side of link
       if (typeof engine.outputs[source.node] !== "undefined" &&
-          typeof engine.outputs[source.port] !== "undefined"
+          typeof engine.outputs[source.node][source.port] !== "undefined"
       ) {
         // fork channel
         const pipe = new Channel();
