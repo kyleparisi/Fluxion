@@ -57,7 +57,10 @@
         if (index) {
           buffer += 5 * index;
         }
-        return 10 * index + buffer + 5;
+        if (!index) {
+          buffer += 5;
+        }
+        return 10 * index + buffer;
       },
       selectLink() {
         if (this.selectedLinks[this.link.id]) {
