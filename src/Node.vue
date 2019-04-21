@@ -13,7 +13,6 @@
       <div class="absolute" :style="{top: top(index), left: 0}">
         <!-- Port -->
         <div class="absolute port pointer bg-green white br-100"
-             v-for="(_, name, index) in node.inputs"
              :id="`inputs_${node.id}_${name}`"
              @click="inputClick(name)"
              @mouseover="mouseOverPort = `${node.id}_${name}`"
