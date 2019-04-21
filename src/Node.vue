@@ -3,8 +3,8 @@
        :class="{'bg-color-node shadow-1': configuring.id === node.id, 'bg-black-node': configuring.id !== node.id, 'b--orange': problem[node.id], 'b--color-node': !problem[node.id], 'flex-column': node.symbol }"
        :style="nodeStyle()"
        v-on:dblclick="configuring = configuring.id === node.id ? {} : node">
-    <div class="tc w-100 pa1" v-if="node.symbol"><img class="w-50" :src="node.symbol"></div>
-    <div class="tc w-100 pa1">{{ node.name }}</div>
+    <div class="tc w-100 pv2 ph3" v-if="node.symbol"><img class="w-50" :src="node.symbol"></div>
+    <div class="tc w-100 pv1 ph3">{{ node.name }}</div>
 
     <component class="w-100 pa1" v-bind:is="node.module" :node="node"></component>
 
