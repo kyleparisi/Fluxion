@@ -53,13 +53,7 @@
     },
     methods: {
       verticalPosition(index) {
-        let buffer = 2.5;
-        if (index) {
-          buffer += 5 * index;
-        }
-        if (!index) {
-          buffer += 5;
-        }
+        const buffer = 8;
         return 10 * index + buffer;
       },
       selectLink() {
