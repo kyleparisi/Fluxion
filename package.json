@@ -20,7 +20,6 @@
     "electron-builder": "^20.40.2",
     "parcel": "^1.12.3",
     "vue-devtools": "^5.0.0-beta.1",
-    "vue-hot-reload-api": "^2.3.3",
     "vue-template-compiler": "^2.6.10"
   },
   "main": "electron-starter.js",

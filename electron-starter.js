@@ -15,6 +15,10 @@ const template = require("./Menu");
 let mainWindow;
 
 function createWindow() {
+  require('vue-devtools').install()
+  // BrowserWindow.removeDevToolsExtension("Vue.js devtools")
+  let installed = BrowserWindow.getDevToolsExtensions();
+  console.log(installed);
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 800,
