@@ -9,10 +9,6 @@ function save() {
     data[layer_id].selectedLinks = {};
     data[layer_id].addingLink = {};
     data[layer_id].problem = {};
-    data[layer_id].pan = {
-      x: window.pageXOffset,
-      y: window.pageYOffset
-    }
   });
   fs.writeFile(file, JSON.stringify(data, null, 2), () => {
     console.log("Saved");

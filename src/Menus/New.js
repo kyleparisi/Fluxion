@@ -12,7 +12,7 @@ const data = [
       },
       svgStyle: {
         width: "100%",
-        height: "100%",
+        height: "100vh",
         overflow: "visible",
         transition: "transform 0.2s"
       },
