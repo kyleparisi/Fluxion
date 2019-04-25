@@ -1,4 +1,4 @@
-import Vue from "vue/dist/vue.min.js";
+import Vue from "vue/dist/vue.js";
 window.Vue = Vue;
 import "./Menus/index";
 import Message from "./Message";

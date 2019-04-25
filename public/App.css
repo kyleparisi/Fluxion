@@ -1,6 +1,6 @@
 #root {
-  min-height: 2000px;
-  min-width: 4000px;
+  height: 100vh;
+  width: 100%;
 }
 
 .hand {

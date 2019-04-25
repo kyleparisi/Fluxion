@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="h-100 bg-black-passive">
+  <div id="app" class="h-100 bg-black-passive" :style="panning">
     <div class="absolute top-0 left-0" :style="app.style">
       <svg :style="app.svgStyle" v-on:dblclick="configuring = {}">
         <marker
@@ -73,12 +73,18 @@
         webFrame.setZoomFactor(newScale);
       }
     },
+    computed: {
+      panning() {
+        return {transform: `translate(${this.pan.x}px, ${this.pan.y}px)`}
+      }
+    },
     mounted() {
       webFrame.setZoomFactor(this.scale);
-      const dragHandler = Drag(this.$el).in(document.body);
+      const dragHandler = Drag(document.getElementById("root")).in(document.body);
       dragHandler.onDrag(state => {
-        if (state.dragging[0] instanceof SVGElement || state.dragging[0].id === "app") {
-          window.scroll(-state.mouse.movementX + window.pageXOffset, -state.mouse.movementY + window.pageYOffset)
+        if (state.dragging[0] instanceof SVGElement || state.dragging[0].id === "root") {
+          this.pan.x += state.mouse.movementX;
+          this.pan.y += state.mouse.movementY;
         }
       });
     },
