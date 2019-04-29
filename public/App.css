@@ -93,7 +93,7 @@ a {
   height: 23px;
   line-height: 23px;
   padding: 0 14px;
-  box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
   border-radius: 3px;
   font-size: 12px;
   font-weight: 600;
@@ -106,7 +106,7 @@ a {
 
 .button:hover {
   transform: translateY(-1px);
-  box-shadow: 0 7px 14px rgba(50, 50, 93, .10), 0 3px 6px rgba(0, 0, 0, .08);
+  box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
   background-color: #43458b;
 }
 
@@ -116,7 +116,7 @@ a {
   top: 25%;
   height: 1em;
   width: 1em;
-  content: '';
+  content: "";
   opacity: 0;
   line-height: 100%;
   border-left: 2px solid rgba(255, 255, 255, 0.2);
@@ -154,12 +154,12 @@ a {
 
 .input {
   padding: 4px;
-  box-sizing : border-box;
+  box-sizing: border-box;
   background-color: #eee;
   width: 100%;
   -webkit-appearance: none;
   -moz-appearance: none;
-  border-color: rgba(0,0,0,.1);
+  border-color: rgba(0, 0, 0, 0.1);
   border-style: solid;
   border-width: 1px;
   border-radius: 3px;
@@ -170,7 +170,7 @@ a {
 }
 
 .stroke-blue {
-  stroke: #6CDADE;
+  stroke: #6cdade;
 }
 
 .stroke-red {
@@ -200,4 +200,8 @@ a {
 
 .search-item:hover {
   background-color: hsl(270, 3%, 25%);
+}
+
+.row-resize {
+  cursor: row-resize;
 }

@@ -30,7 +30,7 @@
     <div>
       <Configuration v-if="configuring.module"></Configuration>
 
-      <Editor v-if="configuring.module"></Editor>
+      <Editor :editorStyle="{height: editor.height + 'px'}" v-if="configuring.module"></Editor>
 
       <SearchNodes></SearchNodes>
 

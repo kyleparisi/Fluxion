@@ -30,6 +30,9 @@ const data = [
         stroke: "rgba(230, 230, 230, 0)"
       }
     },
+    editor: {
+      height: 400
+    },
     pan: {
       x: 0,
       y: 0
