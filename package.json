@@ -1,6 +1,6 @@
 {
   "name": "fluxion",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "A flow based programming environment for javascript and nodejs.",
   "dependencies": {
     "chart.js": "^2.8.0",
