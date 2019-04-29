@@ -30,10 +30,7 @@
     <div>
       <Configuration v-if="configuring.module"></Configuration>
 
-      <div class="fixed left-0 bottom-0 fw6 w-100" v-if="configuring.module">
-        <codemirror :style="{height: '400px'}" v-model="nodes[configuring.id].run" v-if="nodes[configuring.id].run !== undefined" :options="{theme: 'dracula', mode: 'javascript'}"></codemirror>
-        <codemirror :style="{height: '400px'}" v-model="nodes[configuring.id].template" v-if="nodes[configuring.id].template !== undefined" :options="{theme: 'dracula', mode: 'pug'}"></codemirror>
-      </div>
+      <Editor v-if="configuring.module"></Editor>
 
       <SearchNodes></SearchNodes>
 
@@ -57,12 +54,12 @@
   import Packet from "./Packet";
   import Configuration from "./Configuration";
   import WebViewNode from "./WebViewNode";
-  import { codemirror } from 'vue-codemirror';
   import 'codemirror/mode/javascript/javascript.js'
   import 'codemirror/mode/pug/pug.js'
   import SearchNodes from './SearchNodes';
   import Drag from "./Drag";
   import { webFrame } from "electron";
+  import Editor from "./Editor";
 
   module.exports = {
     data() {
@@ -99,6 +96,6 @@
         this.selectedLinks = {};
       }
     },
-    components: { Node, Link, Packet, Configuration, WebViewNode, codemirror, SearchNodes }
+    components: { Node, Link, Packet, Configuration, WebViewNode, Editor, SearchNodes }
 };
 </script>
