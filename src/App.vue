@@ -58,28 +58,18 @@
   import 'codemirror/mode/pug/pug.js'
   import SearchNodes from './SearchNodes';
   import Drag from "./Drag";
-  import { webFrame } from "electron";
   import Editor from "./Editor";
 
   module.exports = {
     data() {
       return window.data[0];
     },
-    watch: {
-      scale(newScale, oldScale) {
-        if (newScale === oldScale) {
-          return newScale;
-        }
-        webFrame.setZoomFactor(newScale);
-      }
-    },
     computed: {
       panning() {
-        return {transform: `translate(${this.pan.x}px, ${this.pan.y}px)`}
+        return {transform: `translate(${this.pan.x}px, ${this.pan.y}px) scale(${this.scale})`}
       }
     },
     mounted() {
-      webFrame.setZoomFactor(this.scale);
       const dragHandler = Drag(document.getElementById("root")).in(document.body);
       dragHandler.onDrag(state => {
         if (state.dragging[0] instanceof SVGElement || state.dragging[0].id === "root") {
