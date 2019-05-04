@@ -63,8 +63,8 @@ function addNode(type = "js") {
     id,
     layer_id: current.layer,
     position: {
-      top: document.documentElement.scrollTop + 10,
-      left: document.documentElement.scrollLeft + 10,
+      top: -window.data[0].pan.y + 10,
+      left: -window.data[0].pan.x + 10,
       right: _.get(conf, "position.right", false) || 130
     }
   };
