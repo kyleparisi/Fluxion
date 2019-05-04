@@ -45,9 +45,6 @@ if (file) {
     systemErrorComponent.message = "File not found";
     throw new Error("File not found");
   }
-
-  document.documentElement.scrollLeft = document.body.scrollLeft = data[current.layer].pan.x;
-  document.documentElement.scrollTop = document.body.scrollTop = data[current.layer].pan.y;
 } else {
   systemErrorComponent.message = "Start here:";
 }
