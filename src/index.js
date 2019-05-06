@@ -7,9 +7,13 @@ const _ = require("lodash");
 const App = require("./App.vue");
 const jsConf = require("./modules/js.conf.json");
 const pugConf = require("./modules/pug.conf.json");
+const chartjsConf = require("./modules/chartjs.conf.json");
+const listConf = require("./modules/list.conf.json");
 const nodeTypes = {
   js: jsConf,
-  pug: pugConf
+  pug: pugConf,
+  chartjs: chartjsConf,
+  list: listConf,
 };
 
 window.current = {
@@ -18,6 +22,8 @@ window.current = {
 window.search = {
   show: false,
   nodes: {
+    chartjs: "Draw charts",
+    list: "List component",
     js: "A generic node that you can program",
     pug: "Render a pug template"
   }

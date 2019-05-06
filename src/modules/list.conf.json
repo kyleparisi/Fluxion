@@ -1,0 +1,7 @@
+{
+  "module": "list",
+  "name": "list",
+  "inputs": {
+    "data": true
+  }
+}

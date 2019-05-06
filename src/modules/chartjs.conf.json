@@ -1,0 +1,7 @@
+{
+  "module": "chartjs",
+  "name": "chartjs",
+  "inputs": {
+    "data": true
+  }
+}

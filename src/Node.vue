@@ -48,6 +48,8 @@
   import Drag from "./Drag";
   import js from "./modules/js.vue";
   import pug from "./modules/pug.vue";
+  import chartjs from "./modules/chartjs.vue";
+  import list from "./modules/list.vue";
 
   export default {
     name: "Node",
@@ -137,6 +139,6 @@
         this.node.position = {left, right, top};
       });
     },
-    components: { js, pug }
+    components: { js, pug, chartjs, list }
   }
 </script>
