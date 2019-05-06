@@ -15,7 +15,7 @@ const template = require("./Menu");
 let mainWindow;
 
 function createWindow() {
-  // require('vue-devtools').install()
+  require('vue-devtools').install()
   // BrowserWindow.removeDevToolsExtension("Vue.js devtools")
   let installed = BrowserWindow.getDevToolsExtensions();
   console.log(installed);
