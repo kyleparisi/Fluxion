@@ -5,5 +5,8 @@
   "outputs": {
     "template": true
   },
-  "symbol": "https://te0-cdn.s3.amazonaws.com/pug.svg"
+  "symbol": "https://te0-cdn.s3.amazonaws.com/pug.svg",
+  "position": {
+    "right": 182
+  }
 }

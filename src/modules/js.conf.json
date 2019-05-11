@@ -4,5 +4,8 @@
   "require": "",
   "run": "",
   "inputs": {},
-  "outputs": {}
+  "outputs": {},
+  "position": {
+    "right": 130
+  }
 }
