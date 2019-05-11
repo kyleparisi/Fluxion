@@ -107,6 +107,7 @@ function resetScale() {
 }
 function handleEsc() {
   Vue.set(data[current.layer], "selectedLinks", {});
+  Vue.set(data[current.layer], "addingLink", {});
   window.search.show = false;
 }
 Mousetrap.bind(["ctrl+n", "command+n"], () => window.search.show = !window.search.show);
