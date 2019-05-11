@@ -114,7 +114,7 @@
           return false;
         }
         const ids = Object.keys(this.links);
-        const id = parseInt(ids[ids.length - 1]) + 1;
+        const id = ids.length ? parseInt(ids[ids.length - 1]) + 1 : 0;
         Vue.set(this.links, id, {
           direction: "->",
           source: {
