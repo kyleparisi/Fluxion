@@ -26,6 +26,10 @@ window.engine = {
   outputs: {}
 };
 window.data = [];
+window.mouse = {
+  x: 0,
+  y: 0
+}
 
 const systemErrorComponent = new Vue({
   el: "#systemError",
@@ -115,6 +119,12 @@ Mousetrap.bind(["backspace"], removeLink);
 window.addEventListener("wheel", handleScale, false);
 Mousetrap.bind(['command+0'], resetScale);
 Mousetrap.bind(["esc"], handleEsc);
+
+document.addEventListener('mousemove', function (event) {
+  const pan = _.get(data, [current.layer, "pan"], {x: 0, y: 0});
+  mouse.x = event.clientX - pan.x;
+  mouse.y = event.clientY - pan.y;
+});
 
 Object.defineProperty(Vue.prototype, "_", { value: _ });
 

@@ -12,6 +12,14 @@
           >
             <circle cx="2" cy="2" r="2" stroke="none" fill="#c3fdff"></circle>
           </marker>
+          <AddingLink
+                  :sourceX="nodes[addingLink.node_id].position.right"
+                  :sourceY="nodes[addingLink.node_id].position.top"
+                  :sourcePortId="Object.keys(nodes[addingLink.node_id].outputs).indexOf(addingLink.port)"
+                  :app="app"
+                  :adding-link="addingLink"
+                  v-if="Object.keys(addingLink).length"
+          ></AddingLink>
           <Link :link="link"
                 :sourceX="nodes[link.source.node].position.right"
                 :sourceY="nodes[link.source.node].position.top"
@@ -50,6 +58,7 @@
 
 <script>
   import Node from "./Node";
+  import AddingLink from "./AddingLink";
   import Link from "./Link";
   import Packet from "./Packet";
   import Configuration from "./Configuration";
@@ -86,6 +95,6 @@
         this.selectedLinks = {};
       }
     },
-    components: { Node, Link, Packet, Configuration, WebViewNode, Editor, SearchNodes }
+    components: { Node, AddingLink, Link, Packet, Configuration, WebViewNode, Editor, SearchNodes }
 };
 </script>
