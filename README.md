@@ -20,7 +20,8 @@ npm start
 
 ## Examples
 
-- [pagination-layout](https://github.com/kyleparisi/pagination-layout)
+- [pagination layout](https://github.com/kyleparisi/pagination-layout)
+- [trading algorithm](https://github.com/kyleparisi/alpaca-sp500)
 
 ## Videos
 
