@@ -59,22 +59,37 @@ const data = [
 ];
 
 function New() {
-  remote.dialog.showSaveDialog(function(file) {
-    if (!file) {
-      return false;
+  remote.dialog.showSaveDialog(
+    {
+      defaultPath: "~/App.fluxion",
+      filters: [
+        {
+          name: "Fluxion",
+          extensions: ["fluxion"]
+        }
+      ]
+    },
+    function(file) {
+      if (!file) {
+        return false;
+      }
+      fs.copyFile(
+        __dirname + "/../src/modules/js.js",
+        path.dirname(file) + "/js.js",
+        err => {
+          if (err) throw err;
+          fs.writeFile(file, JSON.stringify(data, null, 2), () => {
+            console.log("Saved");
+            localStorage.setItem("file", file);
+            window.location.reload();
+          });
+        }
+      );
     }
-    fs.copyFile(__dirname + '/../src/modules/js.js', path.dirname(file) + "/js.js", (err) => {
-      if (err) throw err;
-      fs.writeFile(file, JSON.stringify(data, null, 2), () => {
-        console.log("Saved");
-        localStorage.setItem("file", file);
-        window.location.reload();
-      });
-    });
-  });
+  );
 }
 
 Mousetrap.bind(["ctrl+shift+n", "command+shift+n"], New);
-ipcRenderer.on('New', New);
+ipcRenderer.on("New", New);
 
 module.exports = New;

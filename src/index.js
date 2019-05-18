@@ -2,6 +2,7 @@ import Vue from "vue/dist/vue.js";
 window.Vue = Vue;
 import "./Menus/index";
 import Message from "./Message";
+const fs = require("fs");
 const _ = require("lodash");
 const App = require("./App.vue");
 const jsConf = require("./modules/js.conf.json");
@@ -29,7 +30,7 @@ window.data = [];
 window.mouse = {
   x: 0,
   y: 0
-}
+};
 
 const systemErrorComponent = new Vue({
   el: "#systemError",
@@ -44,7 +45,8 @@ document.title = file || "Welcome to Fluxion";
 if (file) {
   delete require.cache[file];
   try {
-    window.data = require(file);
+    const contents = fs.readFileSync(file, 'utf8');
+    window.data = JSON.parse(contents);
   } catch (e) {
     systemErrorComponent.message = "File not found";
     throw new Error("File not found");
@@ -54,10 +56,10 @@ if (file) {
 }
 function addNode(type = "js") {
   const nodeType = _.get(nodeTypes, type, {
-    "module": type,
-    "name": type,
-    "inputs": {},
-    "outputs": {}
+    module: type,
+    name: type,
+    inputs: {},
+    outputs: {}
   });
   const conf = JSON.parse(JSON.stringify(nodeType));
   const nodes = Object.keys(data[current.layer].nodes);
@@ -86,7 +88,7 @@ window.removeLink = removeLink;
 
 let scaleCache = 1;
 function handleScale(event) {
-  const {deltaY, ctrlKey} = event;
+  const { deltaY, ctrlKey } = event;
   if (!ctrlKey) {
     return false;
   }
@@ -100,7 +102,7 @@ function handleScale(event) {
   }
   scaleCache = deltaY;
 
-  const dScale = (Math.floor(deltaY / 10) / 100);
+  const dScale = Math.floor(deltaY / 10) / 100;
   const rangeScale = Math.min(2, Math.max(0.1, scale + dScale));
   const scaleAsFloat = parseFloat(rangeScale.toFixed(2));
   Vue.set(data[current.layer], "scale", scaleAsFloat);
@@ -114,14 +116,17 @@ function handleEsc() {
   Vue.set(data[current.layer], "addingLink", {});
   window.search.show = false;
 }
-Mousetrap.bind(["ctrl+n", "command+n"], () => window.search.show = !window.search.show);
+Mousetrap.bind(
+  ["ctrl+n", "command+n"],
+  () => (window.search.show = !window.search.show)
+);
 Mousetrap.bind(["backspace"], removeLink);
 window.addEventListener("wheel", handleScale, false);
-Mousetrap.bind(['command+0'], resetScale);
+Mousetrap.bind(["command+0"], resetScale);
 Mousetrap.bind(["esc"], handleEsc);
 
-document.addEventListener('mousemove', function (event) {
-  const pan = _.get(data, [current.layer, "pan"], {x: 0, y: 0});
+document.addEventListener("mousemove", function(event) {
+  const pan = _.get(data, [current.layer, "pan"], { x: 0, y: 0 });
   mouse.x = event.clientX - pan.x;
   mouse.y = event.clientY - pan.y;
 });
@@ -130,7 +135,7 @@ Object.defineProperty(Vue.prototype, "_", { value: _ });
 
 if (file) {
   new Vue({
-    el: '#root',
+    el: "#root",
     components: { App }
   });
 }

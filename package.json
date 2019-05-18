@@ -46,7 +46,11 @@
       "src/modules/*",
       "src/Menus/*",
       "dist"
-    ]
+    ],
+    "fileAssociations": [{
+      "ext": "fluxion",
+      "name": "Fluxion"
+    }]
   },
   "author": "Kyle Parisi (http://blog.kyleparisi.com)",
   "license": "Apache-2.0"
