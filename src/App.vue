@@ -35,6 +35,11 @@
 
       </div>
     </div>
+
+    <div class="fixed-center ba br1 pa3 Code" v-show="!_.size(nodes)">
+      Ctrl+N to make a new node.
+    </div>
+
     <div>
       <Configuration v-if="configuring.module"></Configuration>
 

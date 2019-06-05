@@ -116,10 +116,6 @@ function handleEsc() {
   Vue.set(data[current.layer], "addingLink", {});
   window.search.show = false;
 }
-Mousetrap.bind(
-  ["ctrl+n", "command+n"],
-  () => (window.search.show = !window.search.show)
-);
 Mousetrap.bind(["backspace"], removeLink);
 window.addEventListener("wheel", handleScale, false);
 Mousetrap.bind(["command+0"], resetScale);

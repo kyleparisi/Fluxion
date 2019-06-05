@@ -98,6 +98,18 @@ const template = function(win) {
       ]
     },
     {
+      label: "Insert",
+      submenu: [
+        {
+          label: "New Node",
+          accelerator: "Control+N",
+          click: function() {
+            win.send("New Node");
+          }
+        }
+      ]
+    },
+    {
       label: "View",
       submenu: [
         {
