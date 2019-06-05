@@ -1,0 +1,11 @@
+{
+  "module": "auth0",
+  "name": "Auth0",
+  "require": "",
+  "inputs": {},
+  "outputs": {},
+  "symbol": "https://cdn.te0.io/auth0-badge.png",
+  "position": {
+    "right": 130
+  }
+}

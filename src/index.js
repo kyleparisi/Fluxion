@@ -7,9 +7,13 @@ const _ = require("lodash");
 const App = require("./App.vue");
 const jsConf = require("./modules/js.conf.json");
 const pugConf = require("./modules/pug.conf.json");
+const auth0Conf = require("./modules/auth0.conf.json");
+const googleConf = require("./modules/google.conf.json");
 const nodeTypes = {
   js: jsConf,
-  pug: pugConf
+  pug: pugConf,
+  auth0: auth0Conf,
+  google: googleConf
 };
 
 window.current = {
@@ -19,7 +23,9 @@ window.search = {
   show: false,
   nodes: {
     js: "A generic node that you can program",
-    pug: "Render a pug template"
+    pug: "Render a pug template",
+    auth0: "Configure Auth0 OAuth",
+    google: "Configure Google OAuth"
   }
 };
 window.engine = {

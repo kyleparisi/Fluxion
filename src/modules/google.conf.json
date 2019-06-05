@@ -1,0 +1,11 @@
+{
+  "module": "google",
+  "name": "Google",
+  "require": "",
+  "inputs": {},
+  "outputs": {},
+  "symbol": "https://cdn.te0.io/768px-Google__G__Logo.svg.png",
+  "position": {
+    "right": 130
+  }
+}
