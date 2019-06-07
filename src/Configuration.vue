@@ -74,6 +74,17 @@
       <codemirror :style="{height: '50px'}" class="fw6" v-model="nodes[configuring.id].require" :options="{theme: 'dracula', mode: 'javascript'}"></codemirror>
     </div>
 
+    <div class="pb2" v-if="nodes[configuring.id].selections !== undefined">
+      <div class="pa1 b--configuring-section ba bg-black-section-title">Select Type</div>
+      <label>
+        <select v-model="nodes[configuring.id].selected">
+          <option v-for="option in nodes[configuring.id].selections" v-bind:value="option.value">
+            {{ option.text }}
+          </option>
+        </select>
+      </label>
+    </div>
+
     <div class="pb2" v-if="nodes[configuring.id].configuration !== undefined">
       <div class="pa1 b--configuring-section ba bg-black-section-title">Configuration</div>
       <div class="flex flex-column">

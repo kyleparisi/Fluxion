@@ -3,7 +3,26 @@
   "name": "Session Driver",
   "require": "",
   "inputs": {},
-  "outputs": {},
+  "outputs": {
+    "redis": true,
+    "memory": true,
+    "dynamodb": true
+  },
+  "selected": "memory",
+  "selections": [
+    {
+      "text": "Memory",
+      "value": "memory"
+    },
+    {
+      "text": "Dynamodb",
+      "value": "dynamodb"
+    },
+    {
+      "text": "Redis",
+      "value": "redis"
+    }
+  ],
   "symbol": "",
   "position": {
     "right": 130

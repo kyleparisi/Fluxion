@@ -1,37 +1,66 @@
 <template>
   <div class="pa2">
-    <div class="pa2">
-      <label for="client_id">Client Id</label>
-      <input class="input" v-model="client_id" id="client_id" placeholder="client_id">
-    </div>
-
-    <div class="pa2">
-      <label for="client_secret">Client Secret</label>
-      <input type="password" v-model="client_secret" class="input" id="client_secret" placeholder="client_secret">
-    </div>
-
-    <div class="pa2">
-      <label for="callback_url">Callback URL</label>
-      <input class="input" v-model="callback_url" id="callback_url" placeholder="http://localhost:3000/callback">
-    </div>
   </div>
 </template>
 
 <script>
+  const session = require("express-session");
+  const DynamoDBStore = require("connect-dynamodb")({ session: session });
+  const RedisStore = require("connect-redis")(session);
+
+  // memory
+  function memory() {
+    return session({
+      secret: process.env.SECRET,
+      resave: true,
+      saveUninitialized: true
+    });
+  }
+
+  function dynamodb() {
+    const options = {};
+    return session({
+      store: new DynamoDBStore(options),
+      secret: process.env.SECRET,
+      resave: true,
+      saveUninitialized: true
+    });
+  }
+
+
+  // redis
+  function redis() {
+    return session({
+      store: new RedisStore({
+        host: process.env.REDIS_HOST
+      }),
+      secret: process.env.SECRET,
+      resave: true,
+      saveUninitialized: true
+    });
+  }
+
+  const storage = {
+    memory,
+    redis,
+    dynamodb
+  };
+
   export default {
     name: "session",
     data() {
-      return {
-        client_id: "",
-        client_secret: "",
-        callback_url: ""
-      }
+      return {}
     },
     props: {
       node: Object
     },
     mounted() {
-
+      const outputs = engine.outputs[this.node.id];
+      const driver = storage[this.node.selected]();
+      const port = this._.get(outputs, this.node.selected, false);
+      if (driver && port) {
+        port.put(driver);
+      }
     }
   }
 </script>
