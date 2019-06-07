@@ -3,9 +3,14 @@
   "name": "Google",
   "require": "",
   "inputs": {},
-  "outputs": {},
+  "outputs": {
+    "strategy": true
+  },
   "symbol": "https://cdn.te0.io/768px-Google__G__Logo.svg.png",
   "position": {
     "right": 130
-  }
+  },
+  "clientID": "",
+  "clientSecret": "",
+  "callbackURL": "/auth/google/callback"
 }
