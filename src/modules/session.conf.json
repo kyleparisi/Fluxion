@@ -1,0 +1,11 @@
+{
+  "module": "session",
+  "name": "Session Driver",
+  "require": "",
+  "inputs": {},
+  "outputs": {},
+  "symbol": "",
+  "position": {
+    "right": 130
+  }
+}

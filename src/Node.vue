@@ -50,6 +50,7 @@
   import pug from "./modules/pug.vue";
   import auth0 from "./modules/auth0.vue";
   import google from "./modules/google.vue";
+  import session from "./modules/session.vue";
 
   export default {
     name: "Node",
@@ -139,6 +140,6 @@
         this.node.position = {left, right, top};
       });
     },
-    components: { js, pug, auth0, google }
+    components: { js, pug, auth0, google, session }
   }
 </script>
