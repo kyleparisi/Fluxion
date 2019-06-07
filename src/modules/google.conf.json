@@ -4,7 +4,9 @@
   "require": "",
   "inputs": {},
   "outputs": {
-    "strategy": true
+    "initializeStrategy": true,
+    "strategySession": true,
+    "routes": true
   },
   "symbol": "https://cdn.te0.io/768px-Google__G__Logo.svg.png",
   "position": {

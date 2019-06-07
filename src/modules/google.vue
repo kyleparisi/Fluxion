@@ -20,6 +20,8 @@
 <script>
   const passport = require("passport");
   const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
+  const express = require("express");
+  const router = express.Router();
 
   export default {
     name: "google",
@@ -52,9 +54,32 @@
       });
 
       const outputs = engine.outputs[this.node.id];
-      const port = this._.get(outputs, this.node.strategy, false);
-      if (port) {
-        port.put(passport);
+      const initializeStrategyPort = this._.get(outputs, this.node.initializeStrategy, false);
+      if (initializeStrategyPort) {
+        initializeStrategyPort.put(passport.initialize());
+      }
+      const strategySessionPort = this._.get(outputs, this.node.strategySession, false);
+      if (strategySessionPort) {
+        strategySessionPort.put(passport.session());
+      }
+
+      router.get(
+        "/auth/google",
+        passport.authenticate("google", {
+          scope: ["https://www.googleapis.com/auth/plus.login", "email"]
+        }, () => {})
+      );
+
+      router.get(
+        "/auth/google/callback",
+        passport.authenticate("google", { failureRedirect: "/login" }, () => {}),
+        function(req, res) {
+          res.redirect(req.session.returnTo || "/");
+        }
+      );
+      const routesPort = this._.get(outputs, this.node.routes, false);
+      if (routesPort) {
+        routesPort.put(router);
       }
     }
   }
