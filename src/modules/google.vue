@@ -54,11 +54,11 @@
       });
 
       const outputs = engine.outputs[this.node.id];
-      const initializeStrategyPort = this._.get(outputs, this.node.initializeStrategy, false);
+      const initializeStrategyPort = this._.get(outputs, "initializeStrategy", false);
       if (initializeStrategyPort) {
         initializeStrategyPort.put(passport.initialize());
       }
-      const strategySessionPort = this._.get(outputs, this.node.strategySession, false);
+      const strategySessionPort = this._.get(outputs, "strategySession", false);
       if (strategySessionPort) {
         strategySessionPort.put(passport.session());
       }
@@ -77,7 +77,7 @@
           res.redirect(req.session.returnTo || "/");
         }
       );
-      const routesPort = this._.get(outputs, this.node.routes, false);
+      const routesPort = this._.get(outputs, "routes", false);
       if (routesPort) {
         routesPort.put(router);
       }
