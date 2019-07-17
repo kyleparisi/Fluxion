@@ -38,6 +38,7 @@ const data = [
       y: 0
     },
     scale: 1,
+    throttle: 10,
     links: {},
     nodes: {},
     packets: {},
