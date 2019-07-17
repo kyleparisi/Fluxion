@@ -25,7 +25,7 @@
         return {
           offsetPath: `path("${this.packets[this.link.id].d}")`,
           motionRotation: "reverse",
-          animation: this.packets[this.link.id].direction + " 0.4s linear"
+          animation: this.packets[this.link.id].direction + " " + (this.throttle || 0.4) + "s linear"
         }
       }
     }

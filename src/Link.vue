@@ -119,7 +119,7 @@
             link_id: this.link.id,
             d: this.d
           });
-          // await Sleep(1000);
+          await Sleep(this.throttle * 1000 || 0);
 
           if (this.link.logging) {
             console.log(outputData);
