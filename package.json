@@ -4,7 +4,7 @@
   "description": "A flow based programming environment for javascript and nodejs.",
   "dependencies": {
     "chart.js": "^2.8.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.15",
     "prettier": "^1.17.0",
     "pug": "^2.0.3",
     "vue": "^2.6.10",
@@ -47,10 +47,12 @@
       "src/Menus/*",
       "dist"
     ],
-    "fileAssociations": [{
-      "ext": "fluxion",
-      "name": "Fluxion"
-    }]
+    "fileAssociations": [
+      {
+        "ext": "fluxion",
+        "name": "Fluxion"
+      }
+    ]
   },
   "author": "Kyle Parisi (http://blog.kyleparisi.com)",
   "license": "Apache-2.0"
