@@ -1,0 +1,8 @@
+{
+  "module": "file-input",
+  "name": "File Input",
+  "outputs": {
+    "data": true
+  },
+  "position": {}
+}

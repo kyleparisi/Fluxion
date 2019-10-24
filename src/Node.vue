@@ -48,6 +48,7 @@
   import Drag from "./Drag";
   import js from "./modules/js.vue";
   import pug from "./modules/pug.vue";
+  import fileInput from "./modules/file-input.vue";
 
   export default {
     name: "Node",
@@ -137,6 +138,6 @@
         this.node.position = {left, right, top};
       });
     },
-    components: { js, pug }
+    components: { js, pug, fileInput }
   }
 </script>

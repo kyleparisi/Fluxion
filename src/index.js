@@ -7,9 +7,11 @@ const _ = require("lodash");
 const App = require("./App.vue");
 const jsConf = require("./modules/js.conf.json");
 const pugConf = require("./modules/pug.conf.json");
+const fileInputConf = require("./modules/file-input.conf.json");
 const nodeTypes = {
   js: jsConf,
-  pug: pugConf
+  pug: pugConf,
+  fileInput: fileInputConf
 };
 
 window.current = {
@@ -19,7 +21,8 @@ window.search = {
   show: false,
   nodes: {
     js: "A generic node that you can program",
-    pug: "Render a pug template"
+    pug: "Render a pug template",
+    fileInput: "File upload button, outputs data from the input."
   }
 };
 window.engine = {
