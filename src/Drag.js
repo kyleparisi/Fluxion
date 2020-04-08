@@ -80,6 +80,9 @@ draghandler
           // amount traveled
           state.drag[index].dx = value.clientX - state.drag[index].startMouseX;
           state.drag[index].dy = value.clientY - state.drag[index].startMouseY;
+          // adjust amount traveled by the amount zoomed
+          state.drag[index].dx = state.drag[index].dx / window.data[window.current.layer].scale;
+          state.drag[index].dy = state.drag[index].dy / window.data[window.current.layer].scale;
 
           state.left = state.drag[index].startX + state.drag[index].dx;
           state.styleLeft = state.left + "px";

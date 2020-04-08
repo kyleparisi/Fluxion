@@ -50,6 +50,7 @@
   import pug from "./modules/pug.vue";
   import chartjs from "./modules/chartjs.vue";
   import list from "./modules/list.vue";
+  import fileInput from "./modules/file-input.vue";
 
   export default {
     name: "Node",
@@ -139,6 +140,6 @@
         this.node.position = {left, right, top};
       });
     },
-    components: { js, pug, chartjs, list }
+    components: { js, pug, chartjs, list, fileInput }
   }
 </script>
