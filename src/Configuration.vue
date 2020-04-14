@@ -30,7 +30,7 @@
     </div>
 
     <!-- Style -->
-    <div class="pb2">
+    <div class="pb2" v-if="configuring.style">
       <div class="pa1 mb2 b--configuring-section ba bg-black-section-title">Style</div>
       <div class="flex items-center">
         <div class="w-50 pb2 pr1">
