@@ -29,6 +29,29 @@
       </div>
     </div>
 
+    <!-- Style -->
+    <div class="pb2">
+      <div class="pa1 mb2 b--configuring-section ba bg-black-section-title">Style</div>
+      <div class="flex items-center">
+        <div class="w-50 pb2 pr1">
+          <div class="relative">
+            <div class="absolute w1 right-0 top-0 black" style="line-height: 23px">
+              H
+            </div>
+            <input @keyup="updateStyle" v-model="configuring.style.height" class="input w-100">
+          </div>
+        </div>
+        <div class="w-50 pb2 pl1">
+          <div class="relative">
+            <div class="absolute w1 right-0 top-0 black" style="line-height: 23px">
+              W
+            </div>
+            <input @keyup="updateStyle" v-model="configuring.style.width" class="input w-100">
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Inputs -->
     <div class="pb2">
       <div class="pa1 b--configuring-section ba bg-black-section-title">Inputs</div>
@@ -156,6 +179,9 @@
       },
       updateSymbol() {
         Vue.set(this.nodes[this.configuring.id], 'symbol', this.configuring.symbol);
+      },
+      updateStyle() {
+        Vue.set(this.nodes[this.configuring.id], 'style', this.configuring.style);
       },
       deleteNode() {
         // scan links for deletion

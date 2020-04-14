@@ -1,5 +1,5 @@
 <template>
-  <div class="absolute bg-white" :style="node.style || {}">
+  <div class="absolute bg-white">
     <div>
       <input v-model="node.src" class="input w-100">
       <div class="absolute w1 dim pointer top-0 right-1" @click="$refs.webview.reload()">
@@ -9,9 +9,10 @@
         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
       </div>
     </div>
-    <div style="height: 452px;">
-      <webview ref="webview" class="h-100" :src="node.src" style="width:320px;"></webview>
+    <div :style="{height: node.style.height}">
+      <webview ref="webview" class="h-100" :src="node.src" :style="{width: node.style.width}"></webview>
     </div>
+  </div>
 </template>
 
 <script>
@@ -25,7 +26,12 @@
     },
     mounted() {
       this.$refs.webview.addEventListener("dom-ready", () => {
-        this.$refs.webview.executeJavaScript(this.node.run).then(console.log)
+        this.$refs.webview.executeJavaScript(this.node.run).then(data => {
+          const outputs = engine.outputs[this.node.id];
+          if (outputs && outputs.data) {
+            outputs.data.put(data);
+          }
+        })
       })
     }
   }

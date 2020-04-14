@@ -79,7 +79,7 @@
         return this.node.position.left + "px";
       },
       outputRight() {
-        return this.node.position.left + 120 - 5 + 'px'
+        return this.node.position.left + _.get(this.node, "style.width", 120) - 5 + 'px'
       },
       labelLeft() {
         return this.node.position.left + 10 + 'px'
@@ -100,7 +100,9 @@
           height = 40;
         }
 
+        console.log(this.node.style)
         return {
+          ...this.node.style,
           top: this.node.position.top + "px",
           left: this.node.position.left + "px",
           "min-height": height + "px"
