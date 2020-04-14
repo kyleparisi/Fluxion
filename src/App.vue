@@ -43,7 +43,7 @@
     <div>
       <Configuration v-if="configuring.module"></Configuration>
 
-      <Editor :editorStyle="{height: _.get(editor, 'height', 300) + 'px'}" v-if="configuring.module"></Editor>
+      <Editor :editorStyle="{height: _.get(editor, 'height', 300) + 'px', width: getWidth()}" v-if="configuring.module"></Editor>
 
       <SearchNodes></SearchNodes>
 
@@ -67,7 +67,6 @@
   import Link from "./Link";
   import Packet from "./Packet";
   import Configuration from "./Configuration";
-  import WebViewNode from "./WebViewNode";
   import 'codemirror/mode/javascript/javascript.js'
   import 'codemirror/mode/pug/pug.js'
   import SearchNodes from './SearchNodes';
@@ -98,8 +97,12 @@
           this.links[key].logging = !this.links[key].logging;
         });
         this.selectedLinks = {};
+      },
+      getWidth() {
+        console.log(document.body.clientWidth - 300);
+        return document.body.clientWidth - 300 + "px"
       }
     },
-    components: { Node, AddingLink, Link, Packet, Configuration, WebViewNode, Editor, SearchNodes }
+    components: { Node, AddingLink, Link, Packet, Configuration, Editor, SearchNodes }
 };
 </script>

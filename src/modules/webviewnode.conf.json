@@ -1,0 +1,15 @@
+{
+  "module": "webviewnode",
+  "name": "webviewnode",
+  "require": "",
+  "run": "",
+  "src": "https://google.com",
+  "inputs": {},
+  "outputs": {},
+  "position": {
+    "right": 320
+  },
+  "style": {
+    "width": "325px"
+  }
+}
