@@ -99,7 +99,6 @@
         this.selectedLinks = {};
       },
       getWidth() {
-        console.log(document.body.clientWidth - 300);
         return document.body.clientWidth - 300 + "px"
       }
     },
