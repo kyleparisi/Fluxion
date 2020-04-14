@@ -100,7 +100,6 @@
           height = 40;
         }
 
-        console.log(this.node.style)
         return {
           ...this.node.style,
           top: this.node.position.top + "px",
