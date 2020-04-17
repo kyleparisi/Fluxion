@@ -8,7 +8,6 @@ const App = require("./App.vue");
 const jsConf = require("./modules/js.conf.json");
 const pugConf = require("./modules/pug.conf.json");
 const chartjsConf = require("./modules/chartjs.conf.json");
-const listConf = require("./modules/list.conf.json");
 const fileInputConf = require("./modules/file-input.conf.json");
 const webviewnodeConf = require("./modules/webviewnode.conf.json");
 const nodeTypes = {
@@ -16,7 +15,6 @@ const nodeTypes = {
   pug: pugConf,
   fileInput: fileInputConf,
   chartjs: chartjsConf,
-  list: listConf,
   webviewnode: webviewnodeConf
 };
 
@@ -27,7 +25,6 @@ window.search = {
   show: false,
   nodes: {
     chartjs: "Draw charts",
-    list: "List component",
     js: "A generic node that you can program",
     pug: "Render a pug template",
     fileInput: "File upload button, outputs data from the input.",

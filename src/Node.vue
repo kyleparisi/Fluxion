@@ -49,7 +49,6 @@
   import js from "./modules/js.vue";
   import pug from "./modules/pug.vue";
   import chartjs from "./modules/chartjs.vue";
-  import list from "./modules/list.vue";
   import fileInput from "./modules/file-input.vue";
   import webviewnode from "./modules/webviewnode.vue";
 
@@ -142,6 +141,6 @@
         this.node.position = {left, right, top};
       });
     },
-    components: { js, pug, chartjs, list, fileInput, webviewnode }
+    components: { js, pug, chartjs, fileInput, webviewnode }
   }
 </script>
