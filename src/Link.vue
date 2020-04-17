@@ -100,6 +100,12 @@
           return `M ${start.x},${start.y} L ${end.x},${end.y}`
         }
 
+        function getRandomInt(max) {
+          return Math.floor(Math.random() * Math.floor(max));
+        }
+
+        return `M ${start.x},${start.y} h ${20 + getRandomInt(3) * 10} v ${end.y - start.y} H${end.x}`;
+
         return `M${start.x},${start.y} C${handle.start.x},${handle.start.y} ${handle
           .end.x},${handle.end.y} ${end.x},${end.y}`;
       }
