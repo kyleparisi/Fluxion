@@ -24,7 +24,7 @@
   },
   "main": "electron-starter.js",
   "scripts": {
-    "start": "electron .",
+    "start": "export $(cat .env | grep -v ^# | xargs); electron .",
     "build": "rm -rf dist && parcel build public/index.html --target electron --no-minify --no-source-maps --public-url ./",
     "watch": "parcel public/index.html --target electron --no-hmr --public-url ./",
     "test": "echo no test",

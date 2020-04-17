@@ -1,19 +1,31 @@
-<script>
-  import { Line } from 'vue-chartjs'
+<template>
+  <div class="overflow-auto" style="max-height: 600px;">
+    <div :key="key" v-for="(item, key) in list">
+      <chartjs-line :data="item"></chartjs-line>
+    </div>
+  </div>
+</template>
 
+<script>
+  import ChartjsLine from "./chartjs-line";
   export default {
-    extends: Line,
+    components: { ChartjsLine },
+    data() {
+      return {
+        list: {}
+      }
+    },
     props: {
-      title: String,
-      node: Object,
-      labels: Array,
-      datasets: Array
+      node: Object
     },
     mounted () {
-      this.renderChart({
-        labels: this.labels,
-        datasets: this.datasets
-      }, {responsive: true, maintainAspectRatio: false, title: {display: true, text: this.title}})
+      if (!engine.inputs[this.node.id]) return false;
+      engine.inputs[this.node.id].data.take().then(packet => {
+        if (!Array.isArray(packet)) {
+          packet = [packet]
+        }
+        Vue.set(this, "list", packet);
+      });
     }
   }
 </script>
