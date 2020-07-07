@@ -16,7 +16,7 @@
     "@vue/component-compiler-utils": "^2.6.0",
     "ajv": "^6.10.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "electron": "^4.1.5",
+    "electron": "^7.2.4",
     "electron-builder": "^20.40.2",
     "parcel": "^1.12.4",
     "vue-devtools": "^5.0.0-beta.1",
