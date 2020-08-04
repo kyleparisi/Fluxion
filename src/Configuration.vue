@@ -10,6 +10,7 @@
         </div>
       </div>
     </div>
+    <div class="tc fw1 pb2 gray">module: {{ nodes[configuring.id].module }}</div>
 
     <!-- Name -->
     <div class="pb2">
