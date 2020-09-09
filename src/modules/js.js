@@ -10,7 +10,6 @@ function main() {
 
   let run = "";
   let waits = "";
-  console.log(this.node.inputs)
   Object.keys(this.node.inputs).map(input_name => {
     if (!this.node.inputs[input_name])  return false;
     waits += `
