@@ -58,10 +58,14 @@
       <div class="pa1 b--configuring-section ba bg-black-section-title">Inputs</div>
       <div class="flex items-center hover-row" v-for="(_, name) in nodes[configuring.id].inputs">
         <div class="w-50">{{ name }}</div>
-        <div class="w-50 tr">
-          <div class="dib pointer dim" style="width: 24px" @click="removeInput(name)">
+        <div class="w-50 tr flex items-center" style="justify-content: flex-end">
+          <div>
+            <input type="checkbox" v-model="nodes[configuring.id].inputs[name]" />
+            wait?
+          </div>
+          <div class="pointer dim" style="width: 24px" @click="removeInput(name)">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="white icon-close"><path class="secondary" fill-rule="evenodd" d="M15.78 14.36a1 1 0 0 1-1.42 1.42l-2.82-2.83-2.83 2.83a1 1 0 1 1-1.42-1.42l2.83-2.82L7.3 8.7a1 1 0 0 1 1.42-1.42l2.83 2.83 2.82-2.83a1 1 0 0 1 1.42 1.42l-2.83 2.83 2.83 2.82z"></path></svg></div>
-        </div>
+          </div>
       </div>
       <div class="flex items-center">
         <div class="w-75">
