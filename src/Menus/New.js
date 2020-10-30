@@ -60,7 +60,7 @@ const data = [
 ];
 
 function New() {
-  remote.dialog.showSaveDialog(
+  const file = remote.dialog.showSaveDialogSync(
     {
       defaultPath: "~/App.fluxion",
       filters: [
@@ -69,23 +69,22 @@ function New() {
           extensions: ["fluxion"]
         }
       ]
-    },
-    function(file) {
-      if (!file) {
-        return false;
-      }
-      fs.copyFile(
-        __dirname + "/../src/modules/js.js",
-        path.dirname(file) + "/js.js",
-        err => {
-          if (err) throw err;
-          fs.writeFile(file, JSON.stringify(data, null, 2), () => {
-            console.log("Saved");
-            localStorage.setItem("file", file);
-            window.location.reload();
-          });
-        }
-      );
+    }
+  );
+  if (!file) {
+    console.log("No file to save")
+    return false;
+  }
+  fs.copyFile(
+    __dirname + "/../src/modules/js.js",
+    path.dirname(file) + "/js.js",
+    err => {
+      if (err) throw err;
+      fs.writeFile(file, JSON.stringify(data, null, 2), () => {
+        console.log("Saved");
+        localStorage.setItem("file", file);
+        window.location.reload();
+      });
     }
   );
 }
