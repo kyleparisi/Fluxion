@@ -95,17 +95,24 @@
           y: this.targetY + this.verticalPosition(target_port_id)
         };
 
+        function getRandomInt(max) {
+          return Math.floor(Math.random() * Math.floor(max));
+        }
+
+        // link is looping backwards
+        if (start.x > end.x) {
+          return `M ${start.x},${start.y} h ${20 + getRandomInt(3) * 10} v ${end.y - start.y - 40} h ${handle.end.x - handle.start.x - 20} v ${40} H${end.x}`;
+        }
+
         // line is too short, just do a straight line
         if (handle.start.x > handle.end.x) {
           return `M ${start.x},${start.y} L ${end.x},${end.y}`
         }
 
-        function getRandomInt(max) {
-          return Math.floor(Math.random() * Math.floor(max));
-        }
-
+        // standard square line
         return `M ${start.x},${start.y} h ${20 + getRandomInt(3) * 10} v ${end.y - start.y} H${end.x}`;
 
+        // old smooth line
         return `M${start.x},${start.y} C${handle.start.x},${handle.start.y} ${handle
           .end.x},${handle.end.y} ${end.x},${end.y}`;
       }
