@@ -3,24 +3,24 @@
   "version": "v0.13.1",
   "description": "A flow based programming environment for javascript and nodejs.",
   "dependencies": {
-    "chart.js": "^2.8.0",
-    "lodash": "^4.17.15",
-    "prettier": "^1.17.0",
-    "pug": "^2.0.3",
-    "vue": "^2.6.10",
-    "vue-chartjs": "^3.4.2",
+    "chart.js": "^2.9.4",
+    "lodash": "^4.17.20",
+    "prettier": "^1.19.1",
+    "pug": "^2.0.4",
+    "vue": "^2.6.12",
+    "vue-chartjs": "^3.5.1",
     "vue-clickaway": "^2.2.2",
     "vue-codemirror": "^4.0.6"
   },
   "devDependencies": {
     "@vue/component-compiler-utils": "^2.6.0",
-    "ajv": "^6.10.0",
+    "ajv": "^6.12.6",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "electron": "^7.2.4",
-    "electron-builder": "^20.40.2",
+    "electron": "^7.3.3",
+    "electron-builder": "^20.44.4",
     "parcel": "^1.12.4",
-    "vue-devtools": "^5.0.0-beta.1",
-    "vue-template-compiler": "^2.6.10"
+    "vue-devtools": "^5.1.4",
+    "vue-template-compiler": "^2.6.12"
   },
   "main": "electron-starter.js",
   "scripts": {
