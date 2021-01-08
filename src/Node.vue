@@ -51,6 +51,7 @@
   import chartjs from "./modules/chartjs.vue";
   import fileInput from "./modules/file-input.vue";
   import webviewnode from "./modules/webviewnode.vue";
+  import start from "./modules/start.vue";
 
   export default {
     name: "Node",
@@ -141,6 +142,6 @@
         this.node.position = {left, right, top};
       });
     },
-    components: { js, pug, chartjs, fileInput, webviewnode }
+    components: { js, pug, chartjs, fileInput, webviewnode, start }
   }
 </script>

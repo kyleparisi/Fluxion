@@ -10,12 +10,14 @@ const pugConf = require("./modules/pug.conf.json");
 const chartjsConf = require("./modules/chartjs.conf.json");
 const fileInputConf = require("./modules/file-input.conf.json");
 const webviewnodeConf = require("./modules/webviewnode.conf.json");
+const startConf = require("./modules/start.conf.json");
 const nodeTypes = {
   js: jsConf,
   pug: pugConf,
   fileInput: fileInputConf,
   chartjs: chartjsConf,
-  webviewnode: webviewnodeConf
+  webviewnode: webviewnodeConf,
+  start: startConf,
 };
 
 window.current = {
@@ -28,7 +30,8 @@ window.search = {
     js: "A generic node that you can program",
     pug: "Render a pug template",
     fileInput: "File upload button, outputs data from the input.",
-    webviewnode: "Webview for scrapping"
+    webviewnode: "Webview for scrapping",
+    start: "Send a * packet to start network"
   }
 };
 window.engine = {

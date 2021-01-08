@@ -1,0 +1,7 @@
+{
+  "module": "start",
+  "name": "start",
+  "outputs": {
+    "data": true
+  }
+}
