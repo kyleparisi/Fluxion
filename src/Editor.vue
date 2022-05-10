@@ -5,7 +5,7 @@
       :style="{ height: '100%' }"
       v-model="nodes[configuring.id].run"
       v-if="nodes[configuring.id].run !== undefined"
-      :options="{ theme: 'dracula', mode: 'javascript', lineWrapping: true }"
+      :options="{ theme: 'dracula', mode: 'javascript', tabSize: 2, lineWrapping: true }"
     ></codemirror>
     <codemirror
       :style="{ height: '100%' }"
