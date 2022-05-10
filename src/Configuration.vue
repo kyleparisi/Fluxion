@@ -105,10 +105,10 @@
     <div class="pb2" v-if="nodes[configuring.id].configuration !== undefined">
       <div class="pa1 b--configuring-section ba bg-black-section-title">Configuration</div>
       <div class="flex flex-column">
-        <template v-for="(_, name) in nodes[configuring.id].configuration">
+        <template v-for="(_value, name) in nodes[configuring.id].configuration">
           <div class="pb2">
             <label>{{ name }}</label>
-            <input :type="nodes[configuring.id].protectedConfiguration[name] ? 'password' : 'text'"
+            <input :type="_.get(nodes[configuring.id], ['protectedConfiguration', name], false) ? 'password' : 'text'"
                    class="input"
                    v-model="nodes[configuring.id].configuration[name]"
                    :placeholder="name">
