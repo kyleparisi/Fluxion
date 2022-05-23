@@ -14,7 +14,7 @@ module.exports = function() {
           // no puts ready (might happen downstream)
           let ref;
           const prom = new Promise(resolve => (ref = resolve));
-          obj.takes.splice(0, 1, ref);
+          obj.takes.unshift(ref);
           return () => prom;
         }
         if (prop === "put") {
@@ -24,7 +24,7 @@ module.exports = function() {
           }
           // no takes ready (might happen downstream);
           const fn = data => {
-            obj.puts.splice(0, 1, new Promise(resolve => resolve(data)));
+            obj.puts.unshift(new Promise(resolve => resolve(data)));
           };
           return fn;
         }
