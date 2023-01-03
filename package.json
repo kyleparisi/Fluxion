@@ -18,7 +18,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "electron": "^7.3.3",
     "electron-builder": "^20.44.4",
-    "parcel": "^1.12.4",
+    "parcel": "^2.8.2",
     "vue-devtools": "^5.1.4",
     "vue-template-compiler": "^2.6.12"
   },
