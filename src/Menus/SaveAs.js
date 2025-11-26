@@ -1,4 +1,5 @@
-import { remote, ipcRenderer } from "electron";
+import { ipcRenderer } from "electron";
+const remote = require("@electron/remote");
 const fs = require("fs");
 const path = require("path");
 

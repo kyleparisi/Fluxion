@@ -1,4 +1,5 @@
-import { remote, ipcRenderer } from "electron";
+import { ipcRenderer } from "electron";
+const remote = require("@electron/remote");
 
 function open() {
   const files = remote.dialog.showOpenDialogSync({ properties: ["openFile"] })

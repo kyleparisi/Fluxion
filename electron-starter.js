@@ -9,25 +9,27 @@ const path = require("path");
 const url = require("url");
 
 const template = require("./Menu");
+const remoteMain = require("@electron/remote/main");
+
+remoteMain.initialize();
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 
 function createWindow() {
-  require('vue-devtools').install()
-  // BrowserWindow.removeDevToolsExtension("Vue.js devtools")
-  let installed = BrowserWindow.getDevToolsExtensions();
-  console.log(installed);
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
       nodeIntegration: true,
+      contextIsolation: false,
       webviewTag: true
     }
   });
+
+  remoteMain.enable(mainWindow.webContents);
 
   const menuTemplate = template(mainWindow);
   const menu = Menu.buildFromTemplate(menuTemplate);
