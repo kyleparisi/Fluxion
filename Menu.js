@@ -106,6 +106,13 @@ const template = function(win) {
           click: function() {
             win.send("New Node");
           }
+        },
+        {
+          label: "Create Node with AI",
+          accelerator: "Control+Shift+N",
+          click: function() {
+            win.send("AI Node");
+          }
         }
       ]
     },

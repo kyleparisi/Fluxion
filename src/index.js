@@ -98,26 +98,35 @@ function removeLink() {
 }
 window.removeLink = removeLink;
 
-let scaleCache = 1;
 function handleScale(event) {
-  const { deltaY, ctrlKey } = event;
+  const { deltaY, ctrlKey, clientX, clientY } = event;
   if (!ctrlKey) {
     return false;
   }
   event.preventDefault();
-  if (scaleCache === deltaY) {
-    return false;
-  }
-  const scale = window.data[current.layer].scale;
-  if ((scale === 0.1 && deltaY <= 0) || (scale === 2 && deltaY >= 0)) {
-    return false;
-  }
-  scaleCache = deltaY;
 
-  const dScale = Math.floor(deltaY / 10) / 100;
-  const rangeScale = Math.min(2, Math.max(0.1, scale + dScale));
-  const scaleAsFloat = parseFloat(rangeScale.toFixed(2));
+  const oldScale = window.data[current.layer].scale;
+  const pan = window.data[current.layer].pan;
+
+  // Calculate scale change (negative deltaY = zoom in, positive = zoom out)
+  const dScale = -deltaY / 500;
+  const newScale = Math.min(2, Math.max(0.1, oldScale + dScale));
+
+  if (newScale === oldScale) {
+    return false;
+  }
+
+  const scaleAsFloat = parseFloat(newScale.toFixed(2));
+
+  // Zoom relative to cursor position
+  const worldX = (clientX - pan.x) / oldScale;
+  const worldY = (clientY - pan.y) / oldScale;
+  const newPanX = clientX - worldX * scaleAsFloat;
+  const newPanY = clientY - worldY * scaleAsFloat;
+
   Vue.set(data[current.layer], "scale", scaleAsFloat);
+  Vue.set(data[current.layer].pan, "x", newPanX);
+  Vue.set(data[current.layer].pan, "y", newPanY);
   return false;
 }
 function resetScale() {
@@ -126,10 +135,11 @@ function resetScale() {
 function handleEsc() {
   Vue.set(data[current.layer], "selectedLinks", {});
   Vue.set(data[current.layer], "addingLink", {});
+  Vue.set(data[current.layer], "configuring", {});
   window.search.show = false;
 }
 Mousetrap.bind(["backspace"], removeLink);
-window.addEventListener("wheel", handleScale, false);
+window.addEventListener("wheel", handleScale, { passive: false });
 Mousetrap.bind(["command+0"], resetScale);
 Mousetrap.bind(["esc"], handleEsc);
 

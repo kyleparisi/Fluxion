@@ -47,6 +47,21 @@
 
       <SearchNodes></SearchNodes>
 
+      <AINodeCreator ref="aiNodeCreator"></AINodeCreator>
+
+      <div class="fixed left-1 bottom-1 gray z-2 flex items-center">
+        <label class="mr2 f7">Throttle (s):</label>
+        <input
+          type="number"
+          v-model.number="throttle"
+          min="0"
+          max="60"
+          step="0.1"
+          class="bg-black-80 near-white ba b--gray br2 pa1 w3 tc"
+          style="font-size: 12px;"
+        >
+      </div>
+
       <div class="fixed right-1 bottom-1 gray z-2" v-if="Object.keys(selectedLinks).length">
         <div class="flex items-center">
           <div class="pointer orange" @click="addLoggingToLinks">
@@ -72,6 +87,7 @@
   import SearchNodes from './SearchNodes';
   import Drag from "./Drag";
   import Editor from "./Editor";
+  import AINodeCreator from "./AINodeCreator";
 
   module.exports = {
     data() {
@@ -102,6 +118,6 @@
         return document.body.clientWidth - 300 + "px"
       }
     },
-    components: { Node, AddingLink, Link, Packet, Configuration, Editor, SearchNodes }
+    components: { Node, AddingLink, Link, Packet, Configuration, Editor, SearchNodes, AINodeCreator }
 };
 </script>
